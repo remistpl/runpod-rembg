@@ -1,0 +1,54 @@
+{
+  "title": "Runpod Background Removal (rembg)",
+  "description": "Serverless background removal powered by rembg. Provide image URLs or base64; returns a cut-out RGBA PNG, optional alpha mask, composited image on a custom background, and the foreground bounding box. Supports U2Net, IS-Net, SAM, and BiRefNet model families.",
+  "type": "serverless",
+  "category": "vision",
+  "iconUrl": "https://example.com/icon.png",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 25,
+    "presets": [
+      {
+        "name": "Fast (u2netp)",
+        "defaults": {
+          "REMBG_MODEL": "u2netp"
+        }
+      },
+      {
+        "name": "Default (u2net)",
+        "defaults": {
+          "REMBG_MODEL": "u2net"
+        }
+      },
+      {
+        "name": "Best Quality (isnet-general-use)",
+        "defaults": {
+          "REMBG_MODEL": "isnet-general-use"
+        }
+      },
+      {
+        "name": "Anime (isnet-anime)",
+        "defaults": {
+          "REMBG_MODEL": "isnet-anime"
+        }
+      },
+      {
+        "name": "Portrait (birefnet-portrait)",
+        "defaults": {
+          "REMBG_MODEL": "birefnet-portrait"
+        }
+      }
+    ],
+    "env": [
+      {
+        "key": "REMBG_MODEL",
+        "input": {
+          "name": "Default model",
+          "type": "string",
+          "description": "Default rembg model used when 'model' is not given in the request. One of: u2net, u2netp, u2net_human_seg, u2net_cloth_seg, silueta, isnet-general-use, isnet-anime, sam, birefnet-general, birefnet-portrait.",
+          "default": "u2net"
+        }
+      }
+    ]
+  }
+}
