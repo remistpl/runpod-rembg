@@ -1,0 +1,6 @@
+runpod
+rembg[gpu]>=2.0.50
+Pillow
+numpy
+requests
+onnxruntime-gpu
